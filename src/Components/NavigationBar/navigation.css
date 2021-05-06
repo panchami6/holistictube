@@ -1,0 +1,24 @@
+.navigation{
+    position: fixed;
+    z-index:2;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    padding: 0rem 1rem;
+    background-color: black;
+    height: 10vh;
+    width: 100%;
+  }
+
+.nav-link{
+    font-size:larger;
+    position: relative;
+    color: rgb(245, 241, 241);
+    text-decoration: none;
+    padding: 0rem 0.5rem;
+  }
+  
+.nav-Header{
+    font-size:23px;
+    padding: 0;
+}

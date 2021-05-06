@@ -1,0 +1,121 @@
+.modalBackground{
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out;
+    position: relative;
+}
+
+.modalShowing-true{
+    opacity: 1;
+    background-color: white;
+    color: black;
+    pointer-events: auto;
+    border: 1px solid rgb(175, 173, 173);
+    height: 300px;
+    width: 600px;
+    position: fixed;
+    top: 30%;
+    left: 28%;
+    z-index: 1;
+}
+
+.modal-input{
+    width: 60%;
+    height: 5vh;
+    margin-top: 0.5rem;
+    border-radius: 0.2rem;
+}
+
+.modal-btn{
+    background-color: #AF0F0F;
+    color: #f0d8d8;
+    padding: 6px 6px;
+    border: 1px solid #AF0F0F;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    height: 5vh;
+    margin-left: 0.2rem;
+}
+
+.modal-inner{
+    position: relative;
+}
+
+
+.modal-close-btn{
+    position: absolute;
+    background-color: #AF0F0F;
+    color: #f0d8d8;
+    right: 0.5rem;
+    top:0.5rem;
+    border: 1px solid #AF0F0F;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 3vh;
+    height: 3vh;
+}
+
+.video-page{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.video-card-outer{
+    display:flex;
+    flex-wrap:wrap;
+    padding-left:13rem;
+    padding-top:5rem;
+}
+
+.video-card{
+    position: relative;
+    max-width:250px;
+    height:290px;
+    margin:1rem;
+    padding-left: 0.5rem;
+}
+
+.watchlater-btn{
+    position: absolute;
+    top: 0rem;
+    right: 0rem;
+    margin: 0.5rem;
+    background-color: #AF0F0F;
+    color: #f0d8d8;
+    padding: 6px 6px;
+    border: 1px solid #AF0F0F;
+    border-radius: 10px;
+    cursor: pointer;
+    display: none;
+}
+
+.video-card:hover .watchlater-btn{
+    display: block;
+}
+
+.watchlater-btn:focus{
+    background-color: rgb(104, 19, 19);
+}
+
+.playlist-btn{
+    position: absolute;
+    top: 2rem;
+    right: 0rem;      
+    margin: 0.5rem;
+    background-color: #AF0F0F;
+    color: #f0d8d8;
+    padding: 6px 6px;
+    border: 1px solid #AF0F0F;
+    border-radius: 10px;
+    cursor: pointer;
+    display: none;
+}
+
+.playlist-btn:focus{
+    background-color: rgb(104, 19, 19);
+}
+
+
+.video-card:hover .playlist-btn{
+    display: block;
+}
