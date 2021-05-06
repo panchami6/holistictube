@@ -1,0 +1,23 @@
+.playlist-components{
+    display: flex;
+}
+
+/* .sidebar-component-playlist{
+    width: 200px;
+    text-align: left;
+    padding-left: 3rem;
+    
+} */
+
+.video-card-watch-later{
+    padding-left: 10rem;
+}
+
+.playlist-btn{
+    background-color: #AF0F0F;
+    color: #f0d8d8;
+    padding: 10px 12px;
+    border: 1px solid #AF0F0F;
+    border-radius: 10px;
+    cursor: pointer;
+}
