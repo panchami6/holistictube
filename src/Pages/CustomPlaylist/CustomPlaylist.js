@@ -3,10 +3,10 @@ import "../../Components/SideBar/sidebar.css";
 import { useCustomPlaylist } from "../../Context/customPlaylist-context";
 import "./customplaylist.css";
 import {Link} from "react-router-dom";
-import VideoCard from '../../Components/VideoList/VideoCard';
+// import VideoCard from '../../Components/VideoList/VideoCard';
 
 export const CustomPlaylist = () => {
-    const { customPlaylistState, customPlaylistDispatch } = useCustomPlaylist();
+    const { customPlaylistState } = useCustomPlaylist();
 
     console.log("playlists are", {customPlaylistState})
     return(

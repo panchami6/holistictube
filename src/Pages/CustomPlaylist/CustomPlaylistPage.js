@@ -3,7 +3,7 @@ import {useCustomPlaylist} from "../../Context/customPlaylist-context"
 
 export function CustomPlaylistPage() {
 
-    const { customPlaylistState, customPlaylistDispatch } = useCustomPlaylist(); 
+    const { customPlaylistState} = useCustomPlaylist(); 
     console.log("playlist id", {customPlaylistState})
     // const playlist = customPlaylistState.find((item) => item.currentPlaylistId === currentPlaylistId);
 

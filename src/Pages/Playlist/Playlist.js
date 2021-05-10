@@ -19,7 +19,7 @@ export const Playlist = () => {
                             <img style={{width:"250px", height:"150px"}} src={video.image} alt="ThumbNail" />
                             <div style={{display:"flex"}} >
                                 <div style={{display:"flex"}}>
-                                    <img style={{borderRadius:"50%", height:"40px"}} src={video.avatar} />
+                                    <img style={{borderRadius:"50%", height:"40px"}} src={video.avatar} alt="avatar" />
                                 </div>
                                 <div style={{paddingLeft:"0.5rem", fontSize:"14px"}}>
                                     <h4 style={{ textAlign:"left"}}>{video.title}</h4>
