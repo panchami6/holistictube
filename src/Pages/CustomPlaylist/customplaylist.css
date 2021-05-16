@@ -1,25 +1,43 @@
 .custom-playlist{
-    margin-left: 2rem;
-    margin-top: 1rem;
-    padding-left: 0.5rem;
-    border: 1px solid black;
-    border-radius: 0.5rem;
-    background-color: rgb(175, 173, 173);;
-    height: 8vh;
-    width:700px;
-    text-align: left;
+    position: relative;
+    padding-top: 5rem;
+    margin-left: 14rem;
+    height: 350px;
+    font-weight: bold; 
+    font-size: 20px;
+}
+
+.playlist-list{
+    display: block;
+}
+
+.playlist-header{
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    font-weight: bold;
 }
 
 .playlist-remove-btn{
-    background-color: #AF0F0F;
-    color: #f0d8d8;
-    padding: 10px 12px;
+    background-color: white;
+    padding: 0.5rem;
     margin-right: 1rem;
-    border: 1px solid #AF0F0F;
+    color:#AF0F0F;
+    border: none;
     border-radius: 0.5rem;
     cursor: pointer;
+    font-size: larger;
+}
+
+
+.playlist-card-outer{
+    position: absolute;
+    top: 10rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.playlist-card{
+    max-width:250px;
+    height:290px;
+    margin-right: 1rem;
+    margin-bottom: 2rem;
 }

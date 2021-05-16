@@ -5,7 +5,8 @@ import {DetailedVideo} from '../src/Components/DetailedVideo';
 import { Playlist } from './Pages/Playlist/Playlist';
 import {CustomPlaylist} from './Pages/CustomPlaylist/CustomPlaylist';
 import { Navigation } from './Components/NavigationBar/Navigation';
-import {CustomPlaylistPage} from './Pages/CustomPlaylist/CustomPlaylistPage';
+import Login from "./Pages/Login/Login";
+import {PrivateRoute} from "./Components/PrivateRoute";
 
 function App() {
   return (
@@ -14,9 +15,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/:videoId" element={<DetailedVideo />} />
-        <Route path="/Playlist" element={<Playlist />} />
-        <Route path="/CustomPlaylist" element={<CustomPlaylist />} />
-        <Route path="/CustomPlaylist/:playlistId" element = {<CustomPlaylistPage />} />
+        <PrivateRoute path="/Playlist" element={<Playlist />} />
+        <PrivateRoute path="/CustomPlaylist" element={<CustomPlaylist />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </div>
   );

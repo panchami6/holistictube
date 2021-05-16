@@ -13,9 +13,7 @@ const customPlayListReducer = (state, { type, payload }) => {
     case "ADD_TO_CUSTOM_PLAYLIST":
       return state.map((playlist) => {
         if (playlist.playlistId === payload.playlistId) {
-          console.log("playlist in reducer1", playlist)
           if(playlist.videos.some((item) => item.currentVideoId === payload.currentVideoId)){
-            console.log("playlist in reducer2", playlist)
             const videos = playlist.videos.filter((item) => item.currentVideoId !== payload.currentVideoId);
             return { ...playlist, videos };
           }
@@ -31,12 +29,11 @@ const customPlayListReducer = (state, { type, payload }) => {
       return state.filter((playlist) => playlist.playlistId !== payload.playlistId);
 
     // case "REMOVE":
-    //   payload.setDeleteModalVisibility("hide");
     //   return state.map((playlist) => {
     //     if (playlist.playlistId === payload.playlistId) {
-    //       if (playlist.videos.some((item) => item.v_id === payload.v_id)) {
+    //       if (playlist.videos.some((item) => item.currentVideoId === payload.currentVideoId)) {
     //         const videos = playlist.videos.filter(
-    //           (item) => item.v_id !== payload.v_id
+    //           (item) => item.currentVideoId !== payload.currentVideoId
     //         );
     //         return { ...playlist, videos };
     //       }

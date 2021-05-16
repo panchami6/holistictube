@@ -12,15 +12,24 @@ import "./videocard.css";
 
 export default function VideoCard() {
     const [currentVideoId, setCurrentVideoId] = useState("");
+    const [currentThumbnail, setCurrentThumbnail] = useState("");
+    const [currentAvatar, setCurrentAvatar] = useState("");
+    const [currentTitle, setCurrentTitle] = useState("");
+    const [currentAuthor, setCurrentAuthor] = useState("");
     const [modal, setModal] = useState(false);
     const [userPlaylist, setUserPlaylist] = useState("");
 
     const { playlistDispatch} = usePlaylist();
     const { customPlaylistState, customPlaylistDispatch } = useCustomPlaylist();
+    const [search, setSearch] = useState("");
 
-    const customPlaylistModal = (videoId) => {
+    const customPlaylistModal = (videoId, Thumbnail, avatar, title, author) => {
         setModal(true);
-        setCurrentVideoId(videoId)
+        setCurrentVideoId(videoId);
+        setCurrentThumbnail(Thumbnail);
+        setCurrentAvatar(avatar);
+        setCurrentTitle(title);
+        setCurrentAuthor(author);
     }
 
     const closeModal = () => {
@@ -59,15 +68,13 @@ export default function VideoCard() {
                             <div>
                                 <input 
                                     type="checkbox"
-                                    onChange = {() => customPlaylistDispatch({type:"ADD_TO_CUSTOM_PLAYLIST", payload:{playlistId,currentVideoId}})}
+                                    onChange = {() => customPlaylistDispatch({type:"ADD_TO_CUSTOM_PLAYLIST", payload:{playlistId,currentVideoId, currentThumbnail, currentAvatar, currentTitle, currentAuthor}})}
                                     checked = {videos.some((item) => item.currentVideoId === currentVideoId)}
                                  />
                                 <div>{name}</div>
-                            </div>
-                            
+                            </div>   
                         )
                     }
-                        
                     )}    
                     </div>
                 </div>
@@ -102,7 +109,7 @@ export default function VideoCard() {
                         } 
                         }
                         >Watch Later</button>
-                        <button className = "playlist-btn" onClick={() => customPlaylistModal(video.videoId)}>Add to Playlist</button>
+                        <button className = "playlist-btn" onClick={() => customPlaylistModal(video.videoId, video.image, video.avatar, video.title, video.author)}>Add to Playlist</button>
                     </div>   
                 )
             })}

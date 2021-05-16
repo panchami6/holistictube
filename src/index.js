@@ -6,15 +6,18 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from "react-router-dom";
 import { PlaylistProvider } from './Context/playlist-context';
 import { CustomPlaylistProvider } from './Context/customPlaylist-context';
+import { AuthProvider } from './Context/auth-context';
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
+      <AuthProvider>
         <PlaylistProvider>
           <CustomPlaylistProvider>
             <App />
         </CustomPlaylistProvider>
         </PlaylistProvider>
+        </AuthProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')
