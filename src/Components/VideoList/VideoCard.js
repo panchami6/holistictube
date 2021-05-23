@@ -84,7 +84,7 @@ export default function VideoCard() {
 
     return (
         <div className = "video-page">
-        {modal && <ModalShow />}
+        {modal && ModalShow()}
         <div className = "video-card-outer">
             {data.map((video) => {
                 return(

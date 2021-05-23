@@ -86,11 +86,12 @@
     border: 1px solid #AF0F0F;
     border-radius: 10px;
     cursor: pointer;
-    display: none;
+    opacity: 0;
+    transition: opacity 0.5s;
 }
 
 .video-card:hover .watchlater-btn{
-    display: block;
+    opacity: 1;
 }
 
 .watchlater-btn:focus{
@@ -108,7 +109,8 @@
     border: 1px solid #AF0F0F;
     border-radius: 10px;
     cursor: pointer;
-    display: none;
+    opacity: 0;
+    transition: opacity 0.5s;
 }
 
 .playlist-btn:focus{
@@ -117,5 +119,5 @@
 
 
 .video-card:hover .playlist-btn{
-    display: block;
+    opacity: 1;
 }

@@ -24,6 +24,7 @@
     border: 1px solid #AF0F0F;
     border-radius: 10px;
     cursor: pointer;
+    animation: test 500ms ease-in-out;
 }
 
 .watch-later-card-outer{
