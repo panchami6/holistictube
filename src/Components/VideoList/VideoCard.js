@@ -6,10 +6,6 @@ import {usePlaylist} from '../../Context/playlist-context';
 import {useCustomPlaylist} from "../../Context/customPlaylist-context";
 import "./videocard.css";
 
-// export const isVideoInWatchLater = (playlistVideo, id) => {
-//     return playlistVideo.find((item) => item.id === id);
-//   };
-
 export default function VideoCard() {
     const [currentVideoId, setCurrentVideoId] = useState("");
     const [currentThumbnail, setCurrentThumbnail] = useState("");
@@ -21,7 +17,6 @@ export default function VideoCard() {
 
     const { playlistDispatch} = usePlaylist();
     const { customPlaylistState, customPlaylistDispatch } = useCustomPlaylist();
-    const [search, setSearch] = useState("");
 
     const customPlaylistModal = (videoId, Thumbnail, avatar, title, author) => {
         setModal(true);
@@ -103,9 +98,7 @@ export default function VideoCard() {
                             </div>
                         </Link>
                         <button className = "watchlater-btn" onClick={() =>{
-                            console.log("videoId:", video.videoId)
                              playlistDispatch({ type: "ADD_TO_WATCH_LATER", payload: video })
-                             console.log("Added to playlist", {video})
                         } 
                         }
                         >Watch Later</button>

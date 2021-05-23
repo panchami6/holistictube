@@ -7,7 +7,6 @@ import {Link} from "react-router-dom";
 export const CustomPlaylist = () => {
     const { customPlaylistState, customPlaylistDispatch } = useCustomPlaylist();
 
-    console.log("playlists are", {customPlaylistState})
     return(
         <div className="playlist-page">
             <SideBar />
