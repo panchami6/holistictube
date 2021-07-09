@@ -10,7 +10,7 @@ export function Navigation() {
         <Link className="nav-link nav-header" to="/"><span><i className="fas fa-spa"></i></span> HolisticTube</Link>
         </div>
         <div className = "logout-btn">
-        {isUserLogin && <button className="nav-link" onClick={logoutUser}><i class="fas fa-sign-out-alt"></i></button>}
+        {isUserLogin && <button className="nav-link" onClick={logoutUser}><i className="fas fa-sign-out-alt"></i></button>}
         </div>
     </nav>
     )

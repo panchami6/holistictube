@@ -1,43 +1,95 @@
-.custom-playlist{
-    position: relative;
-    padding-top: 5rem;
-    margin-left: 14rem;
-    height: 350px;
-    font-weight: bold; 
-    font-size: 20px;
-}
 
-.playlist-list{
-    display: block;
-}
-
-.playlist-header{
+.playlists{
     display: flex;
-    justify-content: space-between;
-}
-
-.playlist-remove-btn{
-    background-color: white;
-    padding: 0.5rem;
-    margin-right: 1rem;
-    color:#AF0F0F;
-    border: none;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    font-size: larger;
-}
-
-
-.playlist-card-outer{
-    position: absolute;
-    top: 10rem;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.playlist-card{
-    max-width:250px;
-    height:290px;
-    margin-right: 1rem;
+    height: 150px;
+    margin-left: 15rem;
     margin-bottom: 2rem;
+    position: relative;
+}
+
+.playlist-length{
+    padding-top: 0.8rem;
+    position: absolute;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    opacity: 0.5;
+    width : 300px;
+    height: 8vh;
+    bottom: 0;
+}
+
+.playlist-name{
+    background-color: rgb(236, 232, 232);
+    padding-top: 2rem;
+    height: 150px;
+    width: 300px;
+}
+
+.playlist-link{
+    text-decoration: none;
+    color: black;
+    
+}
+
+.card-playlist{
+    position: relative;;
+    margin-bottom: 1rem;
+}
+
+.card-link{
+    text-decoration:none;
+    color:black;
+    width: 250px;
+    height: 300px;
+}
+
+.video-card{
+    text-decoration: none;
+}
+
+.horizontal-card{
+    display: flex;
+    padding-left: 15rem;
+}
+
+.card-thumbnail{
+    width:242px;
+    height:150px;
+}
+
+.card-details{
+    width: 500px;
+    text-align: left;
+    margin-left: 1rem;
+}
+
+.card-author{
+    color: rgb(80, 79, 79);
+    font-weight: 200;
+}
+
+.card-description{
+    font-size: 16px;
+    display: -webkit-box;
+     max-width: 500px;
+     margin: 1rem 0rem;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.playlist-btn-remove{
+    color:#AF0F0F ;
+    position: absolute;
+    top: 0;
+    left: 440px;
+    background: none;
+    border: none;
+    font-weight: bolder;
+    font-size: 24px;
+    padding: 6px 12px;
+    cursor: pointer;
 }

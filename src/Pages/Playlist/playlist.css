@@ -3,33 +3,28 @@
 }
 
 .watch-later-card{
-     /* margin: 1rem; */
-
      position: relative;
      max-width:250px;
      height:290px;
      margin:1rem;
-     padding-left: 0.5rem;
-    /* padding-right:
-     10rem; */  
+     padding-left: 0.5rem; 
 }
 
 .watch-later-btn{
+    color:#AF0F0F ;
     position: absolute;
-    top: 0.5rem;
-    right: 0;
-    background-color: #AF0F0F;
-    color: #f0d8d8;
+    top: 0;
+    left: 215px;
+    background: none;
+    border: none;
+    font-weight: bolder;
+    font-size: 24px;
     padding: 6px 12px;
-    border: 1px solid #AF0F0F;
-    border-radius: 10px;
     cursor: pointer;
-    animation: test 500ms ease-in-out;
 }
 
 .watch-later-card-outer{
     display:flex;
     flex-wrap:wrap;
     padding-left:13rem;
-    margin-top: 5rem;
 }

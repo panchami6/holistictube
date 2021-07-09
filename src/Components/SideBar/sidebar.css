@@ -3,6 +3,7 @@
     padding-left: 3rem;
     padding-top: 5rem;
     position: fixed;
+    z-index: 1;
 }
 
 .sidebar-link{

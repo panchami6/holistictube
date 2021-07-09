@@ -86,13 +86,10 @@
     border: 1px solid #AF0F0F;
     border-radius: 10px;
     cursor: pointer;
-    opacity: 0;
+    /* opacity: 0; */
     transition: opacity 0.5s;
 }
 
-.video-card:hover .watchlater-btn{
-    opacity: 1;
-}
 
 .watchlater-btn:focus{
     background-color: rgb(104, 19, 19);
@@ -109,7 +106,7 @@
     border: 1px solid #AF0F0F;
     border-radius: 10px;
     cursor: pointer;
-    opacity: 0;
+    /* opacity: 0; */
     transition: opacity 0.5s;
 }
 
@@ -117,7 +114,3 @@
     background-color: rgb(104, 19, 19);
 }
 
-
-.video-card:hover .playlist-btn{
-    opacity: 1;
-}

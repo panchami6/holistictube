@@ -4,7 +4,7 @@ import playlistReducer from "../Reducer/playlist-reducer";
 export const PlaylistContext = createContext();
 
 export function PlaylistProvider({ children }) {
-  const [playlistState, playlistDispatch] = useReducer(playlistReducer, []);
+  const [ playlistState, playlistDispatch ] = useReducer(playlistReducer, { currentVideo: "", watchLater: [] });
   return (
     <PlaylistContext.Provider value={{ playlistState, playlistDispatch }}>
       {children}
