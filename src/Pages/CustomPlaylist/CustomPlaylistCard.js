@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Link} from "react-router-dom";
 import { useCustomPlaylist } from '../../Context/customPlaylist-context';
 import axios from "axios";

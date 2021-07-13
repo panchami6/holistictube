@@ -28,6 +28,10 @@ export function PlaylistModal(){
       }, [customPlaylistDispatch]);
     
     const addNewPlaylist = async (playlistName) => {
+        if(playlistName.replace(/\s/g, "").length <=0){
+            console.log("yes")
+            return
+        }
         if(playlists.find(playlist => playlist.name === playlistName)){
             return;
         } 
@@ -72,7 +76,7 @@ export function PlaylistModal(){
                         onChange = {(e) => setPlaylistName(e.target.value)}
                         />
                         <button onClick={() => addNewPlaylist(playlistName)}
-                        disabled = {playlistName === ""  ? true : false }
+                        disabled = {playlistName === /\w+/g ? true : false }
                        className="modal-btn" >Create</button>
                     </form>
                 </div>
