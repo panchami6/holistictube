@@ -11,7 +11,6 @@ export function VideoCard({video}){
     const { playlistDispatch} = usePlaylist();
     const {userId} = useAuth();
     const {_id, videoId, image, avatar, title, author, views} = video;
-    console.log({video})
 
     const watchLaterApi = `https://holistictubebackend.panchami6.repl.co/watchLater/${userId}`;
 

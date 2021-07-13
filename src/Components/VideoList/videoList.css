@@ -1,5 +1,5 @@
 .modalBackground{
-    opacity: 0;
+    opacity: 0.5;
     pointer-events: none;
     transition: opacity 0.5s ease-in-out;
     position: relative;
@@ -7,7 +7,7 @@
 
 .modalShowing-true{
     opacity: 1;
-    background-color: white;
+    /* background-color: white; */
     color: black;
     pointer-events: auto;
     border: 1px solid rgb(175, 173, 173);
@@ -86,8 +86,6 @@
     border: 1px solid #AF0F0F;
     border-radius: 10px;
     cursor: pointer;
-    /* opacity: 0; */
-    transition: opacity 0.5s;
 }
 
 
@@ -106,8 +104,6 @@
     border: 1px solid #AF0F0F;
     border-radius: 10px;
     cursor: pointer;
-    /* opacity: 0; */
-    transition: opacity 0.5s;
 }
 
 .playlist-btn:focus{

@@ -3,13 +3,21 @@ import axios from "axios";
 import { useCustomPlaylist } from "../Context/customPlaylist-context"
 import { useAuth } from "../Context/auth-context";
 
+
+
 export function PlaylistModal(){
     const [playlistName, setPlaylistName] = useState("");
     const {customPlaylistState, customPlaylistDispatch} = useCustomPlaylist();
     const { playlists, currentVideo, modalShow } = customPlaylistState;
     const {userId} = useAuth();
+    // console.log(playlists)
 
     const customPlaylistApi = `https://holistictubebackend.panchami6.repl.co/playlists/${userId}`;
+
+    // const playlistExistsCheck = (userPlaylist) => {
+    //     console.log(userPlaylist)
+    //     return playlists.find(playlist => playlist.name === userPlaylist)
+    // }
 
     useEffect(() => {
         (async function () {
@@ -20,6 +28,9 @@ export function PlaylistModal(){
       }, [customPlaylistDispatch]);
     
     const addNewPlaylist = async (playlistName) => {
+        if(playlists.find(playlist => playlist.name === playlistName)){
+            return;
+        } 
         try {
             await axios.post(customPlaylistApi, {name:playlistName});  
             customPlaylistDispatch({type:"CREATE_PLAYLIST", payload: playlistName})
@@ -61,7 +72,7 @@ export function PlaylistModal(){
                         onChange = {(e) => setPlaylistName(e.target.value)}
                         />
                         <button onClick={() => addNewPlaylist(playlistName)}
-                        disabled = {playlistName === "" ? true : false }
+                        disabled = {playlistName === ""  ? true : false }
                        className="modal-btn" >Create</button>
                     </form>
                 </div>

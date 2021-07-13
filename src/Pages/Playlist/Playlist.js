@@ -23,8 +23,7 @@ export const Playlist = () => {
 
     const deleteFromWatchLater = async (video) => {
         try {
-            const response = await axios.delete(`${watchLaterApi}/${video._id}`);  
-            console.log(watchLater)  
+            const response = await axios.delete(`${watchLaterApi}/${video._id}`);   
             if(response){
                 playlistDispatch({ type: "REMOVE_FROM_WATCH_LATER", payload: video._id })
             }
@@ -43,7 +42,6 @@ export const Playlist = () => {
             {(watchLater && watchLater.videos) ? (
                 <div>
                 {watchLater.videos.map((video) => {
-                console.log({video})
                 return(
                     <div className = "watch-later-card ">
                     <Link style={{textDecoration:"none", color:"black"}} to={`/${video.videoId}`}>
