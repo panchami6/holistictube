@@ -16,7 +16,7 @@ export function VideoCard({video}){
 
     const addtoWatchLater = async (video) => {
         try {
-            const response = await axios.post(watchLaterApi, { _id, image, avatar, title, author, views });  
+            const response = await axios.post(watchLaterApi, { _id, image, avatar, title, author, views, videoId });  
             if(response) {
                 playlistDispatch({ type: "ADD_TO_WATCH_LATER", payload: video })
             }

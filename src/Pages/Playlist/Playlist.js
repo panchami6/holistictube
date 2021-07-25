@@ -17,6 +17,7 @@ export const Playlist = () => {
         (async function () {
           const response = await axios.get(watchLaterApi);
           const watchLaterData = response.data.watchLater;
+          console.log(watchLaterData)
           playlistDispatch({type:"WATCH_LATER_DATA", payload: watchLaterData});
         })();
       }, [playlistDispatch]);
@@ -42,6 +43,7 @@ export const Playlist = () => {
             {(watchLater && watchLater.videos) ? (
                 <div>
                 {watchLater.videos.map((video) => {
+                    console.log(video)
                 return(
                     <div className = "watch-later-card ">
                     <Link style={{textDecoration:"none", color:"black"}} to={`/${video.videoId}`}>
