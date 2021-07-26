@@ -29,3 +29,19 @@
 .logout-btn{
   font-size: larger;
 }
+
+@media screen and (max-width:500px) {
+  .navigation{
+    padding: 0rem 0.5rem;
+    height: 8vh;
+  }
+
+  .nav-Header{
+    font-size:18px;
+  }
+
+  .logout-btn{
+    font-size: medium;
+  }
+
+}

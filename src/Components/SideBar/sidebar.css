@@ -26,3 +26,47 @@ Link:visited{
     margin-left: -3px;
     top: 0;
   }
+
+
+@media screen and (max-width: 500px) {
+  .sidebar-component{
+    display: flex;
+    width: 100%;
+    padding-left: 0;
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+}
+
+  .separator{
+    display: none;
+  }
+
+  .sidebar-link{
+    font-size:18px;
+    padding: 0rem;
+    width: 100%;
+    background-color: black
+  }
+
+  .fa-clock{
+    padding: 0.8rem 3rem;
+    color: white;
+  }
+
+  .fa-stream{
+    padding: 0.8rem 3rem;
+    color: white;
+  }
+
+  .fa-home{
+    padding: 0.8rem 2.5rem;
+    color: white
+  }
+
+  .sidebar-label{
+    display: none;
+  }
+
+
+}

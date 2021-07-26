@@ -10,14 +10,8 @@ export function PlaylistModal(){
     const {customPlaylistState, customPlaylistDispatch} = useCustomPlaylist();
     const { playlists, currentVideo, modalShow } = customPlaylistState;
     const {userId} = useAuth();
-    // console.log(playlists)
 
     const customPlaylistApi = `https://holistictubebackend.panchami6.repl.co/playlists/${userId}`;
-
-    // const playlistExistsCheck = (userPlaylist) => {
-    //     console.log(userPlaylist)
-    //     return playlists.find(playlist => playlist.name === userPlaylist)
-    // }
 
     useEffect(() => {
         (async function () {
@@ -29,7 +23,6 @@ export function PlaylistModal(){
     
     const addNewPlaylist = async (playlistName) => {
         if(playlistName.replace(/\s/g, "").length <=0){
-            console.log("yes")
             return
         }
         if(playlists.find(playlist => playlist.name === playlistName)){

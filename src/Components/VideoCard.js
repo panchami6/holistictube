@@ -8,7 +8,9 @@ import { useAuth } from "../Context/auth-context";
 
 export function VideoCard({video}){
     const { customPlaylistDispatch } = useCustomPlaylist();
-    const { playlistDispatch} = usePlaylist();
+    const {playlistState, playlistDispatch} = usePlaylist();
+    const {watchLater} = playlistState;
+    console.log(watchLater)
     const {userId} = useAuth();
     const {_id, videoId, image, avatar, title, author, views} = video;
 
