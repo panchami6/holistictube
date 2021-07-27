@@ -9,16 +9,18 @@ export function CustomPlaylistItems(){
     const { customPlaylistState, customPlaylistDispatch } = useCustomPlaylist();
     const {currentPlaylist, playlistVideos} = customPlaylistState;
     const {name, playlistId} = currentPlaylist;
+    console.log(name, playlistId)
     const {userId} = useAuth();
     const customPlaylistApi = `https://holistictubebackend.panchami6.repl.co/playlists/${userId}`;
 
     useEffect(() => {
         (async function () {
+        if(name && playlistId){
           const response = await axios.get(`${customPlaylistApi}/${playlistId}/${name}`);
           const playlistData = response.data.videos;
-        customPlaylistDispatch({type:"PLAYLIST_VIDEOS", payload: playlistData});
+        customPlaylistDispatch({type:"PLAYLIST_VIDEOS", payload: playlistData})}
         })();
-      }, [customPlaylistDispatch, customPlaylistApi]);
+      }, [name, playlistId, customPlaylistDispatch, customPlaylistApi]);
 
     return(
         <div>

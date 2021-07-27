@@ -8,6 +8,7 @@ export function PlaylistModal(){
     const {customPlaylistState, customPlaylistDispatch} = useCustomPlaylist();
     const { playlists, currentVideo } = customPlaylistState;
     const {userId} = useAuth();
+    const [loader, setLoader] = useState(false);
 
     const customPlaylistApi = `https://holistictubebackend.panchami6.repl.co/playlists/${userId}`;
 
@@ -17,7 +18,7 @@ export function PlaylistModal(){
           const playlistData = response.data.playlists;
         customPlaylistDispatch({type:"PLAYLISTS_DATA", payload: playlistData});
         })();
-      }, [customPlaylistDispatch, customPlaylistApi]);
+      }, [loader, customPlaylistDispatch, customPlaylistApi]);
     
     const addNewPlaylist = async (playlistName) => {
         if(playlistName.replace(/\s/g, "").length <=0){
@@ -27,8 +28,10 @@ export function PlaylistModal(){
             return;
         } 
         try {
+            setLoader(true)
             await axios.post(customPlaylistApi, {name:playlistName});  
             customPlaylistDispatch({type:"CREATE_PLAYLIST", payload: playlistName})
+            setLoader(false)
         } catch (error) {
             console.error(error);
         }

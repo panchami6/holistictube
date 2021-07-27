@@ -20,7 +20,7 @@ export function CustomPlaylistCard({video, currentPlaylist}) {
           const playlistData = response.data.videos;
         customPlaylistDispatch({type:"PLAYLIST_VIDEOS", payload: playlistData});
         })();
-      }, [Loader, customPlaylistDispatch, customPlaylistApi]);
+      }, [name, playlistId, Loader, customPlaylistDispatch, customPlaylistApi]);
 
     const removeFromCustomPlaylist = async (playlistId, name, _id, videoId) => {
         try {
