@@ -2,6 +2,12 @@ const customPlayListReducer = (state, { type, payload, name, currentVideo }) => 
   switch (type) {
     case "PLAYLISTS_DATA":
         return {...state, playlists: payload};
+        
+    case "PLAYLIST_VIDEOS":
+      return {
+        ...state,
+        playlistVideos: payload
+      }
 
     case "SHOW_MODAL":
       return { ...state, modalShow: true, currentVideo: payload };

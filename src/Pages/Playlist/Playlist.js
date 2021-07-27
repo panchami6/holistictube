@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import "../../Components/VideoList/videoList.css";
 import "./playlist.css";
 import axios from "axios";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useAuth } from '../../Context/auth-context';
 
 export const Playlist = () => {
@@ -12,22 +12,22 @@ export const Playlist = () => {
     const { watchLater } = playlistState;
     const {userId} = useAuth();
     const watchLaterApi = `https://holistictubebackend.panchami6.repl.co/watchLater/${userId}`;
+    const [Loader, setLoader] = useState(false);
 
     useEffect(() => {
         (async function () {
           const response = await axios.get(watchLaterApi);
           const watchLaterData = response.data.watchLater;
-          console.log(watchLaterData)
           playlistDispatch({type:"WATCH_LATER_DATA", payload: watchLaterData});
         })();
-      }, [playlistDispatch]);
+      }, [Loader, playlistDispatch, watchLaterApi]);
 
     const deleteFromWatchLater = async (video) => {
         try {
-            const response = await axios.delete(`${watchLaterApi}/${video._id}`);   
-            if(response){
+                setLoader(true);
+                await axios.delete(`${watchLaterApi}/${video._id}`);   
                 playlistDispatch({ type: "REMOVE_FROM_WATCH_LATER", payload: video._id })
-            }
+                setLoader(false);
             
         } catch (error) {
             console.error(error);
@@ -35,15 +35,14 @@ export const Playlist = () => {
     }
 
     return (
-        <div style={{display:"flex"}}>
+        <div style = {{display:"flex"}}>
             <SideBar />
-            <div>
-            <h2 style = {{marginTop:"5rem", textAlign:"start", marginLeft:"15rem"}}>Watch Later</h2>
+            <div className = "">
+            <h2 className = "watch-later-heading">Watch Later</h2>
             <div className="watch-later-card-outer">
             {(watchLater && watchLater.videos) ? (
-                <div>
+                <div className = "watch-later-grid">
                 {watchLater.videos.map((video) => {
-                    console.log(video)
                 return(
                     <div className = "watch-later-card ">
                     <Link style={{textDecoration:"none", color:"black"}} to={`/${video.videoId}`}>
@@ -59,7 +58,7 @@ export const Playlist = () => {
                             </div>
                         </div>
                     </Link>
-                        <button className="watch-later-btn" onClick={() => deleteFromWatchLater(video)}><i className="fas fa-trash-alt"></i></button>
+                        <button className="watch-later-btn" onClick={() => deleteFromWatchLater(video)}>{Loader ? <i class="fa fa-spinner fa-spin"></i> : <i className="fas fa-trash-alt"></i>}</button>
                     </div>
                 )   
             })}

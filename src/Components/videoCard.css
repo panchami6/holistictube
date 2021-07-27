@@ -38,3 +38,15 @@
     color: white;
     border: none;
 }
+
+.fa-clock{
+    color: #AF0F0F;
+}
+
+.fs-stream{
+    color: #AF0F0F;
+}
+
+@media screen and(max-width : 500px) {
+   
+}

@@ -7,26 +7,26 @@ import axios from "axios";
 
 export function CustomPlaylistItems(){
     const { customPlaylistState, customPlaylistDispatch } = useCustomPlaylist();
-    const {currentPlaylist} = customPlaylistState;
-    const {name, videos} = currentPlaylist;
+    const {currentPlaylist, playlistVideos} = customPlaylistState;
+    const {name, playlistId} = currentPlaylist;
     const {userId} = useAuth();
     const customPlaylistApi = `https://holistictubebackend.panchami6.repl.co/playlists/${userId}`;
 
     useEffect(() => {
         (async function () {
-          const response = await axios.get(customPlaylistApi);
-          const playlistData = response.data.playlists;
-        customPlaylistDispatch({type:"PLAYLISTS_DATA", payload: playlistData});
+          const response = await axios.get(`${customPlaylistApi}/${playlistId}/${name}`);
+          const playlistData = response.data.videos;
+        customPlaylistDispatch({type:"PLAYLIST_VIDEOS", payload: playlistData});
         })();
-      }, [customPlaylistDispatch]);
+      }, [customPlaylistDispatch, customPlaylistApi]);
 
     return(
         <div>
             <SideBar/>
-            {videos ? (
-                <div>
-                <h1 style={{paddingTop:"5rem"}}> { name } </h1>
-                { videos.map(video => {
+            {playlistVideos!==[] ? (
+                <div className = "custom-playlist-items">
+                <h2 style={{paddingTop:"5rem", paddingBottom:"1rem"}}> { name } <span>({playlistVideos.length})</span></h2>
+                { playlistVideos.map(video => {
                    return(
                     <CustomPlaylistCard video={video} currentPlaylist = {currentPlaylist} />
                    )

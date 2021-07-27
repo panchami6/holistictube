@@ -19,13 +19,13 @@ export const CustomPlaylist = () => {
           const playlistData = response.data.playlists;
         customPlaylistDispatch({type:"PLAYLISTS_DATA", payload: playlistData});
         })();
-      }, [customPlaylistDispatch]);
+      }, [customPlaylistDispatch, customPlaylistApi]);
 
     return(
         <div className="playlist-page">
             <SideBar />
-            <h1 style ={{paddingTop:"5rem"}} className="page-title">Playlists</h1> 
-            <div>
+            <h2 style ={{paddingTop:"5rem", paddingLeft:"9rem"}} className="page-title">Playlists</h2> 
+            <div className = "playlist-page-playlists">
                 {
                     playlists.map(playlist => {
                         return(

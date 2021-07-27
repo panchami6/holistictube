@@ -11,20 +11,43 @@
 }
 
 .watch-later-btn{
-    color:#AF0F0F ;
+    color:#AF0F0F;
     position: absolute;
-    top: 0;
-    left: 215px;
+    top: 8px;
+    left: 228px;
     background: none;
     border: none;
     font-weight: bolder;
-    font-size: 24px;
-    padding: 6px 12px;
+    font-size: 18px;
     cursor: pointer;
+}
+ 
+.watch-later-grid{
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .watch-later-card-outer{
-    display:flex;
-    flex-wrap:wrap;
-    padding-left:13rem;
+    margin-left: 13rem;
+}
+
+.watch-later-heading{
+    margin-top:5rem;
+    margin-left:6rem;
+}
+
+@media screen and (max-width: 500px) {
+
+    .watch-later-heading{
+        margin-top:3.5rem;
+        margin-left:1rem;
+        font-size: 22px;
+    }
+    .watch-later-card-outer{
+        margin-left: 1rem;
+    }
+
+    .watch-later-card{
+        padding-left: 0rem; 
+   }
 }

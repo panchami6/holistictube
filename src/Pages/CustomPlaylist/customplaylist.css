@@ -1,8 +1,13 @@
 
-.playlists{
+.playlist-page-playlists{
     display: flex;
+    flex-wrap: wrap;
+    margin:1rem 2rem 0rem 15rem ;
+    justify-content: space-between;
+}
+
+.playlists{
     height: 150px;
-    margin-left: 15rem;
     margin-bottom: 2rem;
     position: relative;
 }

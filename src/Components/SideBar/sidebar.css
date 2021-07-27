@@ -8,9 +8,8 @@
 
 .sidebar-link{
     font-size:larger;
-    padding: 1rem 0rem;
+    padding: 1.5rem 0rem;
     text-align: left;
-    color: black;
   }
 
 Link:visited{
@@ -26,6 +25,11 @@ Link:visited{
     margin-left: -3px;
     top: 0;
   }
+
+.sidebar-icon{
+  color: black;
+}
+
 
 
 @media screen and (max-width: 500px) {
@@ -46,7 +50,7 @@ Link:visited{
     font-size:18px;
     padding: 0rem;
     width: 100%;
-    background-color: black
+    background-color: black;
   }
 
   .fa-clock{
@@ -61,7 +65,7 @@ Link:visited{
 
   .fa-home{
     padding: 0.8rem 2.5rem;
-    color: white
+    color: white;
   }
 
   .sidebar-label{

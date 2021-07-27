@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {Link} from "react-router-dom";
 import { useCustomPlaylist } from '../../Context/customPlaylist-context';
 import axios from "axios";
@@ -9,20 +9,31 @@ export function CustomPlaylistCard({video, currentPlaylist}) {
     const {_id, videoId, image, title, author, description} = video;
     const {name, playlistId} = currentPlaylist;
     const {userId} = useAuth();
-    const {customPlaylistDispatch} = useCustomPlaylist();
+    const {customPlaylistState, customPlaylistDispatch} = useCustomPlaylist();
+    const {playlistVideos} = customPlaylistState;
     const customPlaylistApi = `https://holistictubebackend.panchami6.repl.co/playlists/${userId}`;
+    const [Loader, setLoader] = useState(false);
 
+    useEffect(() => {
+        (async function () {
+          const response = await axios.get(`${customPlaylistApi}/${playlistId}/${name}`);
+          const playlistData = response.data.videos;
+        customPlaylistDispatch({type:"PLAYLIST_VIDEOS", payload: playlistData});
+        })();
+      }, [Loader, customPlaylistDispatch, customPlaylistApi]);
 
     const removeFromCustomPlaylist = async (playlistId, name, _id, videoId) => {
         try {
+            setLoader(true);
             await axios.delete(`${customPlaylistApi}/${playlistId}/${videoId}`);    
             customPlaylistDispatch({type: "REMOVE_FROM_PLAYLIST", payload: {name: name,_id: _id }})
+            setLoader(false)
         } catch (error) {
             console.error(error);
         }
     }
 
-    return video ? (
+    return playlistVideos !==[] ? (
         <div className = "card-playlist">
             <Link className = "card-link" to={`/${videoId}`} 
                 onClick = { () => {
@@ -39,7 +50,7 @@ export function CustomPlaylistCard({video, currentPlaylist}) {
                 </div>
             </Link>
             <button className="playlist-btn-remove" onClick={() => removeFromCustomPlaylist(playlistId,name, _id, videoId)
-            }><i className="fas fa-trash-alt"></i></button>
+            }>{Loader ? <i class="fa fa-spinner fa-spin"></i>: <i className="fas fa-trash-alt"></i>} </button>
         </div>
     ) : (<div>No Videos</div>)
 }

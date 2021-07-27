@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useState} from "react";
 import { Link } from 'react-router-dom';
 import {useCustomPlaylist} from "../Context/customPlaylist-context";
 import { usePlaylist } from "../Context/playlist-context";
@@ -8,21 +8,21 @@ import { useAuth } from "../Context/auth-context";
 
 export function VideoCard({video}){
     const { customPlaylistDispatch } = useCustomPlaylist();
-    const {playlistState, playlistDispatch} = usePlaylist();
-    const {watchLater} = playlistState;
-    console.log(watchLater)
+    const {playlistDispatch} = usePlaylist();
     const {userId} = useAuth();
     const {_id, videoId, image, avatar, title, author, views} = video;
+    const [Loader, setLoader] = useState(false);
 
     const watchLaterApi = `https://holistictubebackend.panchami6.repl.co/watchLater/${userId}`;
 
     const addtoWatchLater = async (video) => {
         try {
-            const response = await axios.post(watchLaterApi, { _id, image, avatar, title, author, views, videoId });  
-            if(response) {
-                playlistDispatch({ type: "ADD_TO_WATCH_LATER", payload: video })
-            }
+            setLoader(true);
+            await axios.post(watchLaterApi, { _id, image, avatar, title, author, views, videoId });  
+            playlistDispatch({ type: "ADD_TO_WATCH_LATER", payload: video })
+            setLoader(false);
         } catch (error) {
+            setLoader(false);
             console.error(error);
         }
     }
@@ -47,8 +47,8 @@ export function VideoCard({video}){
                 </div>
             </Link>
             <button className = "watchlater-btn" onClick={() => addtoWatchLater(video)}
-            >Watch Later</button>
-            <button className = "playlist-btn" onClick={() =>customPlaylistDispatch({ type: "SHOW_MODAL", payload: video})}>Add to Playlist</button>
+            >{Loader ? <i className="fa fa-spinner fa-spin"></i> : <i className="fas fa-clock"></i>}</button>
+            <button className = "playlist-btn" onClick={() =>customPlaylistDispatch({ type: "SHOW_MODAL", payload: video})}><i className="fas fa-stream"></i></button>
         </div>
     )
 }

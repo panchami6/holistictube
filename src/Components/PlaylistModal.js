@@ -3,12 +3,10 @@ import axios from "axios";
 import { useCustomPlaylist } from "../Context/customPlaylist-context"
 import { useAuth } from "../Context/auth-context";
 
-
-
 export function PlaylistModal(){
     const [playlistName, setPlaylistName] = useState("");
     const {customPlaylistState, customPlaylistDispatch} = useCustomPlaylist();
-    const { playlists, currentVideo, modalShow } = customPlaylistState;
+    const { playlists, currentVideo } = customPlaylistState;
     const {userId} = useAuth();
 
     const customPlaylistApi = `https://holistictubebackend.panchami6.repl.co/playlists/${userId}`;
@@ -19,7 +17,7 @@ export function PlaylistModal(){
           const playlistData = response.data.playlists;
         customPlaylistDispatch({type:"PLAYLISTS_DATA", payload: playlistData});
         })();
-      }, [customPlaylistDispatch]);
+      }, [customPlaylistDispatch, customPlaylistApi]);
     
     const addNewPlaylist = async (playlistName) => {
         if(playlistName.replace(/\s/g, "").length <=0){
@@ -55,12 +53,14 @@ export function PlaylistModal(){
     }
     
     return(
+        <div className = "modal-bg">
          <div 
-         className={`modalBackground modalShowing-${modalShow} `}
+         className = "modal"
+        //  className={`modalBackground modalShowing-${modalShow} `}
           >
             <div className="modal-inner">
                 <button className="modal-close-btn" onClick={()=> customPlaylistDispatch({type:"HIDE_MODAL"})}>X</button>
-                <h2>Create your Playlist</h2>
+                <h2 className = "modal-heading">Create your Playlist</h2>
                 <div>
                     <form onSubmit={(e) => e.preventDefault()}>
                         <input className="modal-input"
@@ -96,5 +96,6 @@ export function PlaylistModal(){
                 </div>
             </div>
         </div> 
+        </div>
     )
 }
