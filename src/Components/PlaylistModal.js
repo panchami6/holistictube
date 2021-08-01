@@ -39,17 +39,21 @@ export function PlaylistModal(){
 
     const addtoCustomPlaylist = async (name, playlistId, currentVideoId, author, avatar, description, image, title, videoId) => {
         try {
+            setLoader(true)
             await axios.post(`${customPlaylistApi}/${playlistId}/${name}`, {currentVideoId, author, avatar, description, image, title, videoId});    
             customPlaylistDispatch({type: "ADD_TO_CUSTOM_PLAYLIST", name: name, currentVideoId: currentVideoId, currentVideo: currentVideo })
+            setLoader(false)
         } catch (error) {
             console.error(error);
         }
     }
 
-    const removeFromCustomPlaylist = async (playlistId, name, _id) => {
+    const removeFromCustomPlaylist = async (playlistId, name, _id, videoId) => {
         try {
-            await axios.delete(`${customPlaylistApi}/${playlistId}/${_id}`);    
+            setLoader(true)
+            await axios.delete(`${customPlaylistApi}/${playlistId}/${videoId}`);    
             customPlaylistDispatch({type: "REMOVE_FROM_PLAYLIST", payload: {name: name,_id: _id }})
+            setLoader(true)
         } catch (error) {
             console.error(error);
         }
@@ -59,7 +63,6 @@ export function PlaylistModal(){
         <div className = "modal-bg">
          <div 
          className = "modal"
-        //  className={`modalBackground modalShowing-${modalShow} `}
           >
             <div className="modal-inner">
                 <button className="modal-close-btn" onClick={()=> customPlaylistDispatch({type:"HIDE_MODAL"})}>X</button>
@@ -89,7 +92,10 @@ export function PlaylistModal(){
                                 name={playlist.name}
                                 checked = { playlist.videos.find(video => video.videoId === videoId) }
                                 type="checkbox"
-                                onChange={ () => playlist.videos.find(video => video.videoId === videoId) ? removeFromCustomPlaylist(playlistId,name, _id) : addtoCustomPlaylist(name, playlistId, _id, author, avatar, description, image, title, videoId) }
+                                onChange={ () => {
+                                    let videoExists = playlist.videos.find(video => video.videoId === videoId)
+                                    playlist.videos.find(video => video.videoId === videoId) ? removeFromCustomPlaylist(playlistId,name, _id, videoId) : addtoCustomPlaylist(name, playlistId, _id, author, avatar, description, image, title, videoId) 
+                                    }}
                                 />
                             {playlist.name}
                             </label>

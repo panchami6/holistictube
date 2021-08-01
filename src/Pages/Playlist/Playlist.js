@@ -13,6 +13,7 @@ export const Playlist = () => {
     const {userId} = useAuth();
     const watchLaterApi = `https://holistictubebackend.panchami6.repl.co/watchLater/${userId}`;
     const [Loader, setLoader] = useState(false);
+    const [loaderId, setLoaderId] = useState("");
 
     useEffect(() => {
         (async function () {
@@ -25,9 +26,11 @@ export const Playlist = () => {
     const deleteFromWatchLater = async (video) => {
         try {
                 setLoader(true);
+                setLoaderId(video._id)
                 await axios.delete(`${watchLaterApi}/${video._id}`);   
                 playlistDispatch({ type: "REMOVE_FROM_WATCH_LATER", payload: video._id })
                 setLoader(false);
+                setLoaderId("")
             
         } catch (error) {
             console.error(error);
@@ -37,7 +40,7 @@ export const Playlist = () => {
     return (
         <div style = {{display:"flex"}}>
             <SideBar />
-            <div className = "">
+            <div>
             <h2 className = "watch-later-heading">Watch Later</h2>
             <div className="watch-later-card-outer">
             {(watchLater && watchLater.videos) ? (
@@ -58,7 +61,7 @@ export const Playlist = () => {
                             </div>
                         </div>
                     </Link>
-                        <button className="watch-later-btn" onClick={() => deleteFromWatchLater(video)}>{Loader ? <i class="fa fa-spinner fa-spin"></i> : <i className="fas fa-trash-alt"></i>}</button>
+                        <button className="watch-later-btn" onClick={() => deleteFromWatchLater(video)}>{(Loader && loaderId === video._id) ? <i class="fa fa-spinner fa-spin"></i> : <i className="fas fa-trash-alt"></i>}</button>
                     </div>
                 )   
             })}
