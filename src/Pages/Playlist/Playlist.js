@@ -61,7 +61,7 @@ export const Playlist = () => {
                             </div>
                         </div>
                     </Link>
-                        <button className="watch-later-btn" onClick={() => deleteFromWatchLater(video)}>{(Loader && loaderId === video._id) ? <i class="fa fa-spinner fa-spin"></i> : <i className="fas fa-trash-alt"></i>}</button>
+                        <button className="watch-later-btn" onClick={() => deleteFromWatchLater(video)}>{(Loader && loaderId === video._id) ? <i className="fa fa-spinner fa-spin"></i> : <i className="fas fa-trash-alt"></i>}</button>
                     </div>
                 )   
             })}
