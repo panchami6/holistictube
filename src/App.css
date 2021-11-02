@@ -8,7 +8,6 @@
 
 .App{
   text-align: center;
-  
 }
 
 iframe{
@@ -17,3 +16,12 @@ iframe{
   width: 800px;
   height: 550px;
 } 
+
+@media screen and (max-width: 500px) {
+  iframe{
+    padding-top: 5rem;
+    margin: 1rem;
+    width: 280px;
+    height: 280px;
+  } 
+}

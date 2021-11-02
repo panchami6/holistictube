@@ -3,13 +3,13 @@
     padding-left: 3rem;
     padding-top: 5rem;
     position: fixed;
+    z-index: 1;
 }
 
 .sidebar-link{
     font-size:larger;
-    padding: 1rem 0rem;
+    padding: 1.5rem 0rem;
     text-align: left;
-    color: black;
   }
 
 Link:visited{
@@ -25,3 +25,52 @@ Link:visited{
     margin-left: -3px;
     top: 0;
   }
+
+.sidebar-icon{
+  color: black;
+}
+
+
+
+@media screen and (max-width: 500px) {
+  .sidebar-component{
+    display: flex;
+    width: 100%;
+    padding-left: 0;
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+}
+
+  .separator{
+    display: none;
+  }
+
+  .sidebar-link{
+    font-size:18px;
+    padding: 0rem;
+    width: 100%;
+    background-color: black;
+  }
+
+  .fa-clock{
+    padding: 0.8rem 3rem;
+    color: white;
+  }
+
+  .fa-stream{
+    padding: 0.8rem 3rem;
+    color: white;
+  }
+
+  .fa-home{
+    padding: 0.8rem 2.5rem;
+    color: white;
+  }
+
+  .sidebar-label{
+    display: none;
+  }
+
+
+}

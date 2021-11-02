@@ -1,37 +1,42 @@
+import React, { useEffect } from "react";
 import SideBar from '../../Components/SideBar/SideBar';
-import "../../Components/SideBar/sidebar.css";
 import { useCustomPlaylist } from "../../Context/customPlaylist-context";
+import { CustomPlaylistPage } from "./CustomPlaylistPage";
+import axios from "axios";
 import "./customplaylist.css";
-import {Link} from "react-router-dom";
-import VideoCard from '../../Components/VideoList/VideoCard';
+import { useAuth } from "../../Context/auth-context";
 
 export const CustomPlaylist = () => {
     const { customPlaylistState, customPlaylistDispatch } = useCustomPlaylist();
+    const {userId} = useAuth();
+    const {playlists} = customPlaylistState;
 
-    console.log("playlists are", {customPlaylistState})
+    const customPlaylistApi = `https://holistictubebackend.panchami6.repl.co/playlists/${userId}`;
+
+    useEffect(() => {
+        (async function () {
+          const response = await axios.get(customPlaylistApi);
+          const playlistData = response.data.playlists;
+        customPlaylistDispatch({type:"PLAYLISTS_DATA", payload: playlistData});
+        })();
+      }, [customPlaylistDispatch, customPlaylistApi]);
+
     return(
-        <div>
+        <div className="playlist-page">
             <SideBar />
-            <div className="video-card-outer">
-                {customPlaylistState.map((playlist) => (
-                    
-                    <div className = "custom-playlist">
-                    {console.log("playlist in customPlaylist: ", playlist)}
-                    <div>{playlist.name}</div>
-                    {playlist.videos.map((video) => {
+            <h2 style ={{paddingTop:"5rem", paddingLeft:"9rem"}} className="page-title">Playlists</h2> 
+            <div className = "playlist-page-playlists">
+                {
+                    playlists.map(playlist => {
                         return(
-                            <div>
-                                <Link style={{textDecoration:"none", color:"black"}} to={`/${video.currentVideoId}`}>
-                               <div>video</div>
-                        </Link>
-                            </div>
+                            <CustomPlaylistPage playlist={playlist}/>
                         )
-                    })}
-                    {/* </Link> */}
-                    <button className = "playlist-remove-btn">Delete</button>
-                    </div>
-                ))}
-            </div> 
+                    })
+                }
+                </div>
         </div>
     )
 }
+
+ 
+

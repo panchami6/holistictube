@@ -4,20 +4,20 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from "react-router-dom";
-import {VideoProvider} from "../src/Context/video-context";
 import { PlaylistProvider } from './Context/playlist-context';
 import { CustomPlaylistProvider } from './Context/customPlaylist-context';
+import { AuthProvider } from './Context/auth-context';
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <VideoProvider>
+      <AuthProvider>
         <PlaylistProvider>
           <CustomPlaylistProvider>
             <App />
         </CustomPlaylistProvider>
         </PlaylistProvider>
-      </VideoProvider>  
+        </AuthProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')

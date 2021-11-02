@@ -6,6 +6,7 @@ export function DetailedVideo() {
     const {videoId} = useParams();
     return (
         <div>
+        <div>
             <iframe
                 title="YouTube video"
                 className="video-iframe"
@@ -13,8 +14,9 @@ export function DetailedVideo() {
                 frameBorder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
-            />
-            <Link to="/"> Go Back </Link>
+            /> 
+        </div>
+        <Link to="/"><button className = "back-btn">Go Back</button></Link>
         </div>
     )
 }

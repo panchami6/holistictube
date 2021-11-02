@@ -1,23 +1,29 @@
-import React from 'react';
-import {useCustomPlaylist} from "../../Context/customPlaylist-context"
+import { useCustomPlaylist } from "../../Context/customPlaylist-context";
+import { Link } from "react-router-dom";
+import {useEffect} from "react";
 
-export function CustomPlaylistPage() {
+export function CustomPlaylistPage({playlist}){
+    const { customPlaylistDispatch } = useCustomPlaylist();
+    const playlistLength = playlist.videos.length;
+    const {_id, name, videos} = playlist;
 
-    const { customPlaylistState, customPlaylistDispatch } = useCustomPlaylist(); 
-    console.log("playlist id", {customPlaylistState})
-    // const playlist = customPlaylistState.find((item) => item.currentPlaylistId === currentPlaylistId);
-
+    useEffect(() => {
+        customPlaylistDispatch( {type: "OPEN_CURRENT_PLAYLIST", payload: {_id, name, videos}} )
+    }, [customPlaylistDispatch, _id, name, videos])
+    
     return(
-        <div>
-            {/* {playlist.videos.map(({ videoId, title, channel }) => (
-          <VideoList
-            key={v_id}
-            v_id={v_id}
-            title={title}
-            channel={channel}
-            onOptionClick={handleOptionClick}
-          />
-            ))} */}
+        <div style={{display:"flex"}} className = "playlists">
+        <Link 
+        className = "playlist-link" to={`/playlists/${playlist._id}`} 
+        
+            onClick={() => customPlaylistDispatch( {type: "OPEN_CURRENT_PLAYLIST", payload: {_id, name, videos}} )}
+        >
+            <h2 className = "playlist-name">{playlist.name}</h2> 
+            <div className = "playlist-length">
+            {playlistLength === 1  ? <div>{playlistLength} Video</div> : <div>{playlistLength} Videos</div>}
+            </div>
+
+        </Link> 
         </div>
-    )
+    ) 
 }

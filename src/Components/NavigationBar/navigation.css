@@ -16,9 +16,32 @@
     color: rgb(245, 241, 241);
     text-decoration: none;
     padding: 0rem 0.5rem;
+    border: none;
+    background-color: black;
+    cursor: pointer;
   }
   
 .nav-Header{
     font-size:23px;
     padding: 0;
+}
+
+.logout-btn{
+  font-size: larger;
+}
+
+@media screen and (max-width:500px) {
+  .navigation{
+    padding: 0rem 0.5rem;
+    height: 8vh;
+  }
+
+  .nav-Header{
+    font-size:18px;
+  }
+
+  .logout-btn{
+    font-size: medium;
+  }
+
 }
